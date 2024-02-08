@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API - XMLHttpRequest</title>
+</head>
+<body style="background-color: #212121;">
+    
+</body>
+
+<script>
+    //req send and receive
+    const xhr = new XMLHttpRequest();
+
+    // OPEN -> send req  ->  open(method, string)
+    const reqURL = 'https://api.github.com/users/octocat';
+    xhr.open('GET', reqURL);
+
+    //checking state
+    xhr.onreadystatechange = function() {
+        console.log("Request status : ",xhr.readyState);
+        
+        // detect state
+        if (xhr.readyState === 4){
+            const data = JSON.parse(this.responseText)
+            console.log(data.followers);
+        }
+    }
+
+    // called req 
+    xhr.send();
+
+
+
+    // Read Documents to know in depth about req APIs
+
+</script>
+</html>

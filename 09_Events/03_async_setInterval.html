@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+
+<body>
+    <h1>Hello World !!</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+
+    /* ############################################################### */
+
+
+    // SETINTERVAL -> Execute the function in the given interval repeatedly
+    // setInterval(() => {
+    //     console.log("SAM", Date.now());
+    // }, 1000);
+
+
+    // setInteravl with 3rd parameter-
+    document.querySelector("#start").addEventListener("click", function () {
+        const start = function () {
+            console.log("SAM", Date.now());
+        };
+        const intervalId = setInterval(start, 1000, (click = start));
+
+
+        // CLEARINTERVAL -> 
+        document.querySelector("#stop").addEventListener('click', () => {
+            clearInterval(intervalId);
+        })
+    });
+
+    // ANOTHER WAY-
+    let stopInterval;
+    document.querySelector("#start").addEventListener("click", function(){
+        stopInterval = setInterval(function () {
+            console.log("start Interval", Date.now())
+        }, 1000)
+    });
+
+    document.querySelector("#stop").addEventListener("click", function() {
+        clearInterval(intervalId);
+    })
+
+
+
+    /* ############################################################### */
+</script>
+
+</html>

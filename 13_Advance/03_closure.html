@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+
+<body style="background-color: #212121; color: #fff;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+    // LEXICAL SCOPING
+    function outer() {
+        let name = "SAM"
+        function inner() {
+            console.log(name);
+        };
+        inner();
+    }
+    outer();
+
+
+
+    // CLOSURES
+    function makeFunc() {
+        let name = "SAM"
+        function inner() {
+            console.log(name);
+        };
+        return inner;       // this return lexical scope as reference not only that function
+    }
+    let myFunc = makeFunc();
+    myFunc(); // Outputs: SAM
+</script>
+
+<script>
+    // USECASE OF LEXICAL & CLOUSER
+
+
+    
+    // document.getElementById('orange').onclick = function () {
+    //     document.body.style.backgroundColor = 'orange'
+    // }
+    // document.getElementById('green').onclick = function () {
+    //     document.body.style.backgroundColor = 'green'
+    // }
+
+    function clickHandler(color) {
+        // document.body.style.backgroundColor = `${color}`;
+
+        return function () {
+            document.body.style.backgroundColor = `${color}`;
+        }
+    }
+
+    document.getElementById('orange').onclick = clickHandler('orange');
+    document.getElementById('green').onclick = clickHandler('green');
+</script>
+
+</html>
